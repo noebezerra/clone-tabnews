@@ -2,6 +2,22 @@
 
 Implementação do https://www.tabnews.com.br para o https://curso.dev
 
+# Install
+
+Initialize a Codespaces and run
+
+Initialize container docker and start project
+
+```
+npm run dev
+```
+
+Run tests
+
+```
+npm run test:watch
+```
+
 # Docker
 
 Subir container
