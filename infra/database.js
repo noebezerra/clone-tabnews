@@ -1,4 +1,4 @@
-import { Client } from "pg";
+import { Client, Pool } from "pg";
 
 async function query(queryObject) {
   const client = new Client({
@@ -7,6 +7,9 @@ async function query(queryObject) {
     user: process.env.POSTGRES_USER,
     database: process.env.POSTGRES_DB,
     password: process.env.POSTGRES_PASSWORD,
+    // max: 20,
+    // idleTimeoutMillis: 30000,
+    // connectionTimeoutMillis: 2000,
     ssl: getSSLValues(),
   });
 
@@ -28,8 +31,8 @@ export default {
 
 function getSSLValues() {
   if (process.env.POSTGRES_CA) {
-    return { ca: process.env.POSTGRES_CA }
+    return { ca: process.env.POSTGRES_CA };
   }
 
-  return process.env.NODE_ENV === "development" ? false : true
+  return process.env.NODE_ENV === "development" ? false : true;
 }
